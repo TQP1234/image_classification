@@ -63,14 +63,14 @@ Dataset is to be stored stored in the following structure (Example shown below).
 
 ## Model Architecture
 
-It will be a custom Convolutional Neural Network built for experimentational.
+It will be a custom Convolutional Neural Network built for experimentational. Model architeture is written at model.py where it can be edited and imported to train.py, test.py, and predict.py.
 
 ## Training
 
-Loss function: Cross Entropy Loss
-Optimizer: Adam
-Epochs: 100
-Learning rate: 0.001
+Loss function: Cross Entropy Loss</br>
+Optimizer: Adam</br>
+Epochs: 100</br>
+Learning rate: 0.001</br>
 
 The above parameters are used for training. Checkpoints are being saved every epoch, with the best checkpoint saved as best.pt. F1 macro average score (where all classes are treated equally) is used to determine the best checkpoint.
 
