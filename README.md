@@ -76,14 +76,14 @@ The above parameters are used for training. Checkpoints are being saved every ep
 
 ### Training Loss vs Validation Loss
 
-
+![loss](https://github.com/TQP1234/image_classification/assets/75831732/b832906f-feaa-4bb2-b7f8-a720c099a6d2)
 
 ### Training Accuracy vs Validation Accuracy
 
-
+![accuracy](https://github.com/TQP1234/image_classification/assets/75831732/cc3bda6d-ed8d-49b4-b31e-159ca967f063)
 
 ### Best checkpoint
 
-
+<img width="386" alt="best_checkpoint" src="https://github.com/TQP1234/image_classification/assets/75831732/9c04ea2f-8c0e-43c2-8365-fd643b6b7740">
 
 Validation accuracy is slightly below 90%. Not too bad.
