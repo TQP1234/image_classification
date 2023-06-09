@@ -124,5 +124,5 @@ Table of parameters:
 | image_size | Set the image input size | No | Integer value (eg. 224) | 224 |
 | batch_size | Number of images in a batch | No | Integer value (eg. 64) | 64 |
 | num_workers | Number of sub-processes to use for data loading | No | Integer value (eg. 4) | 4 |
-| image_path | Path to the dataset | Yes | ./dataset | NIL |
+| image_path | Path to the dataset | Yes | ./dataset/ | NIL |
 | weight | Path to the saved weight | Yes | ./saved_models/weights/ | NIL |
