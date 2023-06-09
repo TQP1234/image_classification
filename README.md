@@ -1,4 +1,4 @@
-# image_classification
+# Image Classification
 
 The goal is to build a custom Convolutional Neural Network for image classification tasks. Pytorch is used for building the model architecture. The train, test and predict processes shall also be streamlined for ease of usage.
 
