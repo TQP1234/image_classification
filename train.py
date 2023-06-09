@@ -5,16 +5,43 @@ from torchvision import datasets, transforms
 from sklearn import metrics
 from model import Simple_ConvNet
 import matplotlib.pyplot as plt
+import argparse
 import os
 import time
 
 
 def main():
-    image_size = 224
-    batch_size = 64
-    num_workers = 4
-    image_path = './datasets/Intel_Image_Classification/'
-    output_path = './saved_models/'
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('--image_size', type=int, required=False)
+    parser.add_argument('--batch_size', type=int, required=False)
+    parser.add_argument('--num_workers', type=int, required=False)
+    parser.add_argument('--image_path', type=str, required=True)
+    parser.add_argument('--output_path', type=str, required=False)
+
+    args = parser.parse_args()
+
+    if args.image_size is not None:
+        image_size = args.image_size
+    else:
+        image_size = 224
+
+    if args.batch_size is not None:
+        batch_size = args.batch_size
+    else:
+        batch_size = 64
+
+    if args.num_workers is not None:
+        num_workers = args.num_workers
+    else:
+        num_workers = 4
+
+    if args.output_path is not None:
+        output_path = args.output_path
+    else:
+        output_path = './saved_models/'
+
+    image_path = args.image_path
 
     train_transform = transforms.Compose([
         transforms.Resize(image_size),

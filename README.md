@@ -71,6 +71,7 @@ Loss function: Cross Entropy Loss</br>
 Optimizer: Adam</br>
 Epochs: 100</br>
 Learning rate: 0.001</br>
+Image size = 224 x 224</br>
 
 The above parameters are used for training. Checkpoints are being saved every epoch, with the best checkpoint saved as best.pt. F1 macro average score (where all classes are treated equally) is used to determine the best checkpoint.
 
@@ -87,3 +88,41 @@ The above parameters are used for training. Checkpoints are being saved every ep
 <img width="386" alt="best_checkpoint" src="https://github.com/TQP1234/image_classification/assets/75831732/9c04ea2f-8c0e-43c2-8365-fd643b6b7740">
 
 Validation accuracy is slightly below 90%. Not too bad.
+
+## Usage
+
+### Training
+
+Use the following command. Loss and accuracy graph will be updated and stored at the root folder.
+
+``` shell
+python train.py --image_size 224 --batch_size 64 --num_workers 4 --image_path ./datasets/ --output_path ./saved_models/
+```
+
+Table of parameters:
+
+| Parameter | Function | Required? | Example input | Default Value |
+| :-- | :-: | :-: | :-: | :-: |
+| image_size | Set the image input size | No | Integer value (eg. 224) | 224 |
+| batch_size | Number of images in a batch | No | Integer value (eg. 64) | 64 |
+| num_workers | Number of sub-processes to use for data loading | No | Integer value (eg. 4) | 4 |
+| image_path | Path to the dataset | Yes | ./dataset | NIL |
+| output_path | Set the path where the weights are saved | No | ./saved_models/ | ./saved_models/ |
+
+### Testing
+
+Use the following command. Confusion matrix will be stored at the root folder.
+
+``` shell
+python test.py --image_size 224 --batch_size 64 --num_workers 4 --weights ./saved_models/Intel_Image_Classification/weights/best.pt --image_path ./datasets/valid/
+```
+
+Table of parameters:
+
+| Parameter | Function | Required? | Example input | Default Value |
+| :-- | :-: | :-: | :-: | :-: |
+| image_size | Set the image input size | No | Integer value (eg. 224) | 224 |
+| batch_size | Number of images in a batch | No | Integer value (eg. 64) | 64 |
+| num_workers | Number of sub-processes to use for data loading | No | Integer value (eg. 4) | 4 |
+| image_path | Path to the dataset | Yes | ./dataset | NIL |
+| weight | Path to the saved weight | Yes | ./saved_models/weights/ | NIL |

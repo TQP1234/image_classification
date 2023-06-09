@@ -6,15 +6,38 @@ from sklearn import metrics
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 from model import Simple_ConvNet
 import matplotlib.pyplot as plt
+import argparse
 import os
 
 
 def main():
-    model_path = './saved_models/Intel_image_Classification/weights/best.pt'
-    output_path = './saved_models/'
-    image_size = 224
-    batch_size = 64
-    num_workers = 4
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('--weight', type=str, required=True)
+    parser.add_argument('--image_size', type=int, required=False)
+    parser.add_argument('--batch_size', type=int, required=False)
+    parser.add_argument('--num_workers', type=int, required=False)
+    parser.add_argument('--image_path', type=str, required=True)
+
+    args = parser.parse_args()
+
+    if args.image_size is not None:
+        image_size = args.image_size
+    else:
+        image_size = 224
+
+    if args.batch_size is not None:
+        batch_size = args.batch_size
+    else:
+        batch_size = 64
+
+    if args.num_workers is not None:
+        num_workers = args.num_workers
+    else:
+        num_workers = 4
+
+    test_path = args.image_path
+    saved_weight = args.weight
 
     test_transform = transforms.Compose([
         transforms.Resize(image_size),
@@ -23,8 +46,6 @@ def main():
         transforms.Normalize([0.485, 0.456, 0.406],
                              [0.229, 0.224, 0.225])
     ])
-
-    test_path = './datasets/Intel_Image_Classification/valid/'
 
     test_data = datasets.ImageFolder(
             os.path.join(test_path),
@@ -48,7 +69,7 @@ def main():
     model = Simple_ConvNet(3, image_size, len(class_names)).to(device)
 
     # load model
-    model.load_state_dict(torch.load(model_path))
+    model.load_state_dict(torch.load(saved_weight))
     model.eval()
 
     test_correct = []
