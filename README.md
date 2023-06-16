@@ -87,11 +87,11 @@ The above parameters are used for training. Checkpoints are being saved every ep
 
 <img width="386" alt="best_checkpoint" src="https://github.com/TQP1234/image_classification/assets/75831732/9c04ea2f-8c0e-43c2-8365-fd643b6b7740">
 
-Validation accuracy is slightly below 90%. Not too bad.
+Validation accuracy is slightly below <b>90%</b>. Not too bad.
 
 ## Model Evaluation
 
-In practical cases, we will always use unseen data as the test set to evaluate the model. Since the test set is not labeled, the validation set will be used as an example in this case. Run test.py (refer to the usage section on how to use it) and a confusion matrix will be generated.
+In practical cases, we will always use unseen data as the test set to evaluate the model. Since the test set is not labeled, the validation set will be used as an example in this case. Run test.py <b>(refer to the usage section on how to use it)</b> and a confusion matrix will be generated.
 
 ### Confusion Matrix
 
