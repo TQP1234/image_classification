@@ -3,7 +3,7 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 from sklearn import metrics
-from model import Simple_ConvNet
+from model import SimpleConvNet
 import matplotlib.pyplot as plt
 import argparse
 import os
@@ -104,7 +104,7 @@ def main():
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
     torch.manual_seed(29)
-    model = Simple_ConvNet(3, image_size, len(class_names)).to(device)
+    model = SimpleConvNet(3, image_size, len(class_names)).to(device)
     for X_train, y_train in train_loader:
         X_train = X_train.to(device)
         traced_cell = torch.jit.trace(model, X_train)

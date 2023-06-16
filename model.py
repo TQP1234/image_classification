@@ -2,7 +2,7 @@ import torch.nn as nn
 from collections import OrderedDict
 
 
-class Simple_ConvNet(nn.Module):
+class SimpleConvNet(nn.Module):
     def __init__(self, input_channel, input_size, output_size):
         super().__init__()
 
