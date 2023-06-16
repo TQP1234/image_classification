@@ -8,9 +8,9 @@ Dataset is downloaded from https://www.kaggle.com/datasets/puneet6060/intel-imag
 
 The Intel Image Classification dataset has 6 classes (buildings, forest, glacier, mountain, sea, street) and are indexed accordingly from 0 to 5.
 
-Train set contains 14034 images (buildings - 2191, forest - 2271, glacier - 2404, mountain - 2512, sea - 2274, street - 2382).
+Train set contains 14034 images <b>(buildings - 2191, forest - 2271, glacier - 2404, mountain - 2512, sea - 2274, street - 2382)</b>.
 
-Validation set contains 3000 images (buildings - 437, forest - 474, glacier - 553, mountain - 525, sea - 510, street - 501).
+Validation set contains 3000 images <b>(buildings - 437, forest - 474, glacier - 553, mountain - 525, sea - 510, street - 501)</b>.
 
 All classes are pretty balanced.
 
@@ -73,7 +73,7 @@ Epochs: 100</br>
 Learning rate: 0.001</br>
 Image size = 224 x 224</br>
 
-The above parameters are used for training. Checkpoints are being saved every epoch, with the best checkpoint saved as best.pt. F1 macro average score (where all classes are treated equally) is used to determine the best checkpoint.
+The above parameters are used for training. Checkpoints are being saved every epoch, with the best checkpoint saved as best.pt. F1 macro average score <b>(where all classes are treated equally)</b> is used to determine the best checkpoint.
 
 ### Training Loss vs Validation Loss
 
@@ -87,7 +87,7 @@ The above parameters are used for training. Checkpoints are being saved every ep
 
 <img width="386" alt="best_checkpoint" src="https://github.com/TQP1234/image_classification/assets/75831732/9c04ea2f-8c0e-43c2-8365-fd643b6b7740">
 
-Validation accuracy is slightly below <b>90%</b>. Not too bad.
+Validation accuracy is <b>slightly below 90%</b>. Not too bad.
 
 ## Model Evaluation
 
