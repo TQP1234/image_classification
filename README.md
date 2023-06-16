@@ -89,11 +89,19 @@ The above parameters are used for training. Checkpoints are being saved every ep
 
 Validation accuracy is slightly below 90%. Not too bad.
 
+## Model Evaluation
+
+In practical cases, we will always use unseen data as the test set to evaluate the model. Since the test set is not labeled, the validation set will be used as an example in this case. Run test.py (refer to the usage section on how to use it) and a confusion matrix will be generated.
+
+### Confusion Matrix
+
+As we can see, the model performs generally well. Most errors come from the buildings/street and glacier/mountain classes. It's because those pairs of classes are somewhat correlated. Glacier and mountain looked similar; street and buildings in a single image. To further improve this classification model, we may employ image augmentation technique.
+
 ## Usage
 
 ### Training
 
-Use the following command. Loss and accuracy graph will be updated and stored at the root folder.
+Use the following command to train the model. Loss and accuracy graph will be updated and stored at the root folder.
 
 ``` shell
 python train.py --image_size 224 --batch_size 64 --num_workers 4 --image_path ./datasets/ --output_path ./saved_models/ --epochs 100 --learning_rate 0.001
@@ -113,7 +121,7 @@ Table of parameters:
 
 ### Testing
 
-Use the following command. Confusion matrix will be stored at the root folder.
+Use the following command for model evaluation. Confusion matrix will be stored at the root folder.
 
 ``` shell
 python test.py --image_size 224 --batch_size 64 --num_workers 4 --weights ./saved_models/Intel_Image_Classification/weights/best.pt --image_path ./datasets/valid/
@@ -132,7 +140,7 @@ Table of parameters:
 
 ### Making Prediction
 
-Use the following command. It will output the class index.
+Use the following command to make prediction. It will output the class index.
 
 ``` shell
 python predict.py --image_size 224 --weights ./saved_models/Intel_Image_Classification/weights/best.pt --image ./street.jpg
