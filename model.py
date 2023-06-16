@@ -18,7 +18,7 @@ class Simple_ConvNet(nn.Module):
                 ('pool1', nn.MaxPool2d(2, 2)),
                 ('conv2', nn.Conv2d(32, 64, 3, 1, 1)),
                 ('leaky2', nn.LeakyReLU(inplace=True)),
-                ('pool2', nn.MaxPool2d(2 , 2)),
+                ('pool2', nn.MaxPool2d(2, 2)),
                 ('conv3', nn.Conv2d(64, 128, 3, 1, 1)),
                 ('leaky3', nn.LeakyReLU(inplace=True)),
                 ('pool3', nn.MaxPool2d(2, 2)),
@@ -30,7 +30,7 @@ class Simple_ConvNet(nn.Module):
         self.SqueezeAndExcitation1 = nn.Sequential(
             OrderedDict([
                 ('globalpool1', nn.AvgPool2d(input_size//8, 1)),  # global average pooling
-                ('flat1', nn.Flatten()), # convert the dimension from (B, C, 1, 1) to (B, C)
+                ('flat1', nn.Flatten()),  # convert the dimension from (B, C, 1, 1) to (B, C)
                 ('fc1', nn.Linear(256, 256//r)),
                 ('relu1', nn.ReLU(inplace=True)),
                 ('fc2', nn.Linear(256//r, 256)),
@@ -45,14 +45,14 @@ class Simple_ConvNet(nn.Module):
                 ('pool1', nn.MaxPool2d(2, 2)),
                 ('conv2', nn.Conv2d(512, 1024, 3, 1, 1)),
                 ('leaky2', nn.LeakyReLU(inplace=True)),
-                ('pool2', nn.MaxPool2d(2 , 2))
+                ('pool2', nn.MaxPool2d(2, 2))
             ])
         )
 
         self.SqueezeAndExcitation2 = nn.Sequential(
             OrderedDict([
                 ('globalpool1', nn.AvgPool2d(input_size//32, 1)),  # global average pooling
-                ('flat1', nn.Flatten()), # convert the dimension from (B, C, 1, 1) to (B, C)
+                ('flat1', nn.Flatten()),  # convert the dimension from (B, C, 1, 1) to (B, C)
                 ('fc1', nn.Linear(1024, 1024//r)),
                 ('relu1', nn.ReLU(inplace=True)),
                 ('fc2', nn.Linear(1024//r, 1024)),

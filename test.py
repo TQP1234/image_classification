@@ -1,10 +1,8 @@
 import torch
-import torch.nn as nn
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 from sklearn import metrics
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
-from model import Simple_ConvNet
 import matplotlib.pyplot as plt
 import argparse
 import os
@@ -66,10 +64,8 @@ def main():
 
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
-    model = Simple_ConvNet(3, image_size, len(class_names)).to(device)
-
     # load model
-    model.load_state_dict(torch.load(saved_weight))
+    model = torch.jit.load(saved_weight).to(device)
     model.eval()
 
     test_correct = []

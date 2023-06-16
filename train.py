@@ -18,6 +18,8 @@ def main():
     parser.add_argument('--num_workers', type=int, required=False)
     parser.add_argument('--image_path', type=str, required=True)
     parser.add_argument('--output_path', type=str, required=False)
+    parser.add_argument('--epochs', type=int, required=True)
+    parser.add_argument('--learning_rate', type=float, required=True)
 
     args = parser.parse_args()
 
@@ -42,6 +44,8 @@ def main():
         output_path = './saved_models/'
 
     image_path = args.image_path
+    epochs = args.epochs
+    learning_rate = args.learning_rate
 
     train_transform = transforms.Compose([
         transforms.Resize(image_size),
@@ -101,6 +105,10 @@ def main():
 
     torch.manual_seed(29)
     model = Simple_ConvNet(3, image_size, len(class_names)).to(device)
+    for X_train, y_train in train_loader:
+        X_train = X_train.to(device)
+        traced_cell = torch.jit.trace(model, X_train)
+        break
 
     print(f'{model}\n\n'
           f'number_of_training_images: {len(train_data)}\n'
@@ -109,7 +117,7 @@ def main():
           f'classes: {class_names}')
 
     criterion = nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
     total_params = sum(p.numel() for p in model.parameters())
     trainable_params = sum(p.numel() for p in model.parameters()
@@ -123,7 +131,6 @@ def main():
 
     start_time = time.time()
 
-    epochs = 100
     train_losses = []
     valid_losses = []
     train_correct = []
@@ -221,8 +228,8 @@ def main():
 
         print(f'\n=====Validation=====\n{checkpoint}\n')
 
-        torch.save(model.state_dict(),
-                   output_path + str(i).zfill(len(str(epochs))) + '.pt')
+        torch.jit.save(traced_cell,
+                       output_path + str(i).zfill(len(str(epochs))) + '.pt')
 
         with open(output_path + str(i).zfill(len(str(epochs))) + '.txt',
                   'w') as f:
@@ -230,7 +237,7 @@ def main():
 
         # set f1 macro avg score as the criteria for the best score
         if macro_avg > best_f1_score:
-            torch.save(model.state_dict(), output_path + 'best.pt')
+            torch.jit.save(traced_cell, output_path + 'best.pt')
             best_f1_score = macro_avg
             best_checkpoint = checkpoint
 
@@ -264,7 +271,7 @@ def main():
     current_time = time.time()
     total = current_time - start_time
     print(f'\nTraining took {total/60} minutes\n'
-            f'\n=====Best Checkpoint=====\n{best_checkpoint}\n')
+          f'\n=====Best Checkpoint=====\n{best_checkpoint}\n')
 
 
 if __name__ == '__main__':

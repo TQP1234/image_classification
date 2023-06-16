@@ -1,6 +1,6 @@
 # Image Classification
 
-The goal is to build a custom Convolutional Neural Network for image classification tasks. Pytorch is used for building the model architecture. The train, test and predict processes shall also be streamlined for ease of usage.
+The goal is to build a custom Convolutional Neural Network for image classification tasks. Pytorch is used for building the model architecture. The train, test, and predict processes shall also be streamlined for ease of usage.
 
 ## Dataset
 
@@ -63,7 +63,7 @@ Dataset is to be stored stored in the following structure (Example shown below).
 
 ## Model Architecture
 
-It will be a custom Convolutional Neural Network built for experimentational. Model architeture is written at model.py where it can be edited and imported to train.py, test.py, and predict.py.
+It will be a custom Convolutional Neural Network built for experimentational. Model architeture is written at model.py.
 
 ## Training
 
@@ -96,7 +96,7 @@ Validation accuracy is slightly below 90%. Not too bad.
 Use the following command. Loss and accuracy graph will be updated and stored at the root folder.
 
 ``` shell
-python train.py --image_size 224 --batch_size 64 --num_workers 4 --image_path ./datasets/ --output_path ./saved_models/
+python train.py --image_size 224 --batch_size 64 --num_workers 4 --image_path ./datasets/ --output_path ./saved_models/ --epochs 100 --learning_rate 0.001
 ```
 
 Table of parameters:
@@ -108,6 +108,8 @@ Table of parameters:
 | num_workers | Number of sub-processes to use for data loading | No | Integer value (eg. 4) | 4 |
 | image_path | Path to the dataset | Yes | ./dataset | NIL |
 | output_path | Set the path where the weights are saved | No | ./saved_models/ | ./saved_models/ |
+| epochs | Set the number of training epochs | Yes | Integer value (eg. 100) | NIL |
+| learning_rate | Set the learning rate | Yes | Float value (eg. 0.001) | NIL |
 
 ### Testing
 
@@ -125,4 +127,21 @@ Table of parameters:
 | batch_size | Number of images in a batch | No | Integer value (eg. 64) | 64 |
 | num_workers | Number of sub-processes to use for data loading | No | Integer value (eg. 4) | 4 |
 | image_path | Path to the dataset | Yes | ./datasets/ | NIL |
+| weight | Path to the saved weight | Yes | ./saved_models/weights/ | NIL |
+
+
+### Making Prediction
+
+Use the following command. It will output the class index.
+
+``` shell
+python predict.py --image_size 224 --weights ./saved_models/Intel_Image_Classification/weights/best.pt --image ./street.jpg
+```
+
+Table of parameters:
+
+| Parameter | Function | Required? | Example input | Default Value |
+| :-- | :-: | :-: | :-: | :-: |
+| image_size | Set the image input size | No | Integer value (eg. 224) | 224 |
+| image | Path to the dataset | Yes | ./datasets/ | NIL |
 | weight | Path to the saved weight | Yes | ./saved_models/weights/ | NIL |
