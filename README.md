@@ -6,7 +6,7 @@ The goal is to build a custom Convolutional Neural Network for image classificat
 
 Dataset is downloaded from https://www.kaggle.com/datasets/puneet6060/intel-image-classification.
 
-The Intel Image Classification dataset has 6 classes <b>(buildings, forest, glacier, mountain, sea, street)</br> and are <b>indexed accordingly from 0 to 5</br>.
+The Intel Image Classification dataset has 6 classes <b>(buildings, forest, glacier, mountain, sea, street)</b> and are <b>indexed accordingly from 0 to 5</b>.
 
 Train set contains 14034 images <b>(buildings - 2191, forest - 2271, glacier - 2404, mountain - 2512, sea - 2274, street - 2382)</b>.
 
