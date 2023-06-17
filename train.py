@@ -108,14 +108,19 @@ def main():
     torch.manual_seed(29)
     if saved_weight is not None:
         model = torch.jit.load(saved_weight).to(device)
+
+        traced_cell = model
+
     else:
         model = SimpleConvNet(3, image_size, len(class_names)).to(device)
-    for X_train, y_train in train_loader:
-        X_train = X_train.to(device)
-        traced_cell = torch.jit.trace(model, X_train)
-        break
 
-    print(f'{model}\n\n'
+        for X_train, y_train in train_loader:
+            X_train = X_train.to(device)
+            traced_cell = torch.jit.trace(model, X_train)
+            break
+
+
+    print(f'\n{model}\n\n'
           f'number_of_training_images: {len(train_data)}\n'
           f'number_of_validation_images: {len(valid_data)}\n'
           f'number_of_classes: {len(class_names)}\n'
