@@ -129,7 +129,7 @@ Table of parameters:
 Use the following command for model evaluation. Confusion matrix will be stored at the root folder.
 
 ``` shell
-python test.py --image_size 224 --batch_size 64 --num_workers 4 --weights ./saved_models/Intel_Image_Classification/weights/best.pt --image_path ./datasets/valid/
+python test.py --image_size 224 --batch_size 64 --num_workers 4 --weight ./saved_models/Intel_Image_Classification/weights/best.pt --image_path ./datasets/valid/
 ```
 
 Table of parameters:
@@ -148,7 +148,7 @@ Table of parameters:
 Use the following command to make prediction. It will output the class index.
 
 ``` shell
-python predict.py --image_size 224 --weights ./saved_models/Intel_Image_Classification/weights/best.pt --image ./street.jpg
+python predict.py --image_size 224 --weight ./saved_models/Intel_Image_Classification/weights/best.pt --image ./street.jpg
 ```
 
 Table of parameters:
