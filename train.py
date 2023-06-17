@@ -20,7 +20,7 @@ def main():
     parser.add_argument('--output_path', type=str, required=False)
     parser.add_argument('--epochs', type=int, required=True)
     parser.add_argument('--learning_rate', type=float, required=True)
-    parser.add_argument('--weight', type=str, required=True)
+    parser.add_argument('--weight', type=str, required=False)
 
     args = parser.parse_args()
 

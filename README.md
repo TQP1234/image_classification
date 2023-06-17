@@ -122,7 +122,7 @@ Table of parameters:
 | output_path | Set the path where the weights are saved | No | ./saved_models/ | ./saved_models/ |
 | epochs | Set the number of training epochs | Yes | Integer value (eg. 100) | NIL |
 | learning_rate | Set the learning rate | Yes | Float value (eg. 0.001) | NIL |
-| weight | Path to the saved weight | Yes | ./saved_models/weights/ | NIL |
+| weight | Path to the saved weight | No | ./saved_models/weights/ | NIL |
 
 ### Testing
 
