@@ -20,6 +20,7 @@ def main():
     parser.add_argument('--output_path', type=str, required=False)
     parser.add_argument('--epochs', type=int, required=True)
     parser.add_argument('--learning_rate', type=float, required=True)
+    parser.add_argument('--weight', type=str, required=True)
 
     args = parser.parse_args()
 
@@ -46,6 +47,7 @@ def main():
     image_path = args.image_path
     epochs = args.epochs
     learning_rate = args.learning_rate
+    saved_weight = args.weight
 
     train_transform = transforms.Compose([
         transforms.Resize(image_size),
@@ -104,7 +106,10 @@ def main():
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
     torch.manual_seed(29)
-    model = SimpleConvNet(3, image_size, len(class_names)).to(device)
+    if saved_weight is not None:
+        model = torch.jit.load(saved_weight).to(device)
+    else:
+        model = SimpleConvNet(3, image_size, len(class_names)).to(device)
     for X_train, y_train in train_loader:
         X_train = X_train.to(device)
         traced_cell = torch.jit.trace(model, X_train)

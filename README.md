@@ -108,7 +108,7 @@ As we can see, the model performs generally well. Most errors come from the buil
 Use the following command to train the model. Loss and accuracy graph will be updated and stored at the root folder.
 
 ``` shell
-python train.py --image_size 224 --batch_size 64 --num_workers 4 --image_path ./datasets/ --output_path ./saved_models/ --epochs 100 --learning_rate 0.001
+python train.py --image_size 224 --batch_size 64 --num_workers 4 --image_path ./datasets/ --output_path ./saved_models/ --epochs 100 --learning_rate 0.001 --weight ./saved_models/Intel_Image_Classification/weights/best.pt
 ```
 
 Table of parameters:
@@ -122,6 +122,7 @@ Table of parameters:
 | output_path | Set the path where the weights are saved | No | ./saved_models/ | ./saved_models/ |
 | epochs | Set the number of training epochs | Yes | Integer value (eg. 100) | NIL |
 | learning_rate | Set the learning rate | Yes | Float value (eg. 0.001) | NIL |
+| weight | Path to the saved weight | Yes | ./saved_models/weights/ | NIL |
 
 ### Testing
 
