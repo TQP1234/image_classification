@@ -1,19 +1,19 @@
-epoch: 97
-training_loss: 0.00000
-training_accuracy: 99.88 %
-validation_loss: 0.74793
-validation_accuracy: 89.43 %
+epoch: 83
+training_loss: 0.00264
+training_accuracy: 99.34 %
+validation_loss: 0.28939
+validation_accuracy: 91.53 %
 
               precision    recall  f1-score   support
 
-         0.0      0.890     0.874     0.882       437
-         1.0      0.973     0.985     0.979       474
-         2.0      0.856     0.819     0.837       553
-         3.0      0.842     0.853     0.848       525
-         4.0      0.911     0.924     0.917       510
-         5.0      0.901     0.922     0.911       501
+         0.0      0.906     0.902     0.904       437
+         1.0      0.985     0.983     0.984       474
+         2.0      0.871     0.881     0.876       553
+         3.0      0.874     0.882     0.878       525
+         4.0      0.961     0.918     0.939       510
+         5.0      0.907     0.934     0.920       501
 
-    accuracy                          0.894      3000
-   macro avg      0.896     0.896     0.896      3000
-weighted avg      0.894     0.894     0.894      3000
+    accuracy                          0.915      3000
+   macro avg      0.917     0.917     0.917      3000
+weighted avg      0.916     0.915     0.915      3000
 

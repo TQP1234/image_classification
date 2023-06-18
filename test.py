@@ -59,7 +59,7 @@ def main():
         # prefetch_factor=8,
         # pin_memory=True,
         # persistent_workers=True,
-        shuffle=True
+        shuffle=False
     )
 
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')

@@ -1,6 +1,5 @@
 datasets/
-SimpleConvNet.drawio
-SimpleConvNet.png
+model_architecture/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
