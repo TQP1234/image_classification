@@ -99,7 +99,7 @@ In practical cases, we will always use unseen data as the test set to evaluate t
 
 ![confusion_matrix](https://github.com/TQP1234/image_classification/assets/75831732/cb4f4e42-41b2-43b7-83ec-a2363acc8bf7)
 
-As we can see, the model performs generally well. Most errors come from the buildings/street and glacier/mountain classes. It's because those pairs of classes are somewhat correlated. Glacier and mountain looked similar; street and buildings in a single image. To further improve this classification model, we may employ image augmentation technique.
+As we can see, the model performs generally well. Most errors come from the buildings/street and glacier/mountain classes. It's because those pairs of classes are somewhat correlated. Glacier and mountain looked similar; street and buildings may appear in a single image. To further improve this classification model, we may employ image augmentation technique.
 
 ## Usage
 
