@@ -65,7 +65,7 @@ Dataset is to be stored stored in the following structure (Example shown below).
 
 It will be a custom Convolutional Neural Network built for experimentational. Model architeture is written at model.py. Inspiration taken from https://arxiv.org/abs/1709.01507 (Squeeze-and-Excitation Networks).
 
-![SimpleConvNet](https://github.com/TQP1234/image_classification/assets/75831732/b95acb35-5481-4710-8cf4-be14cbef4105)
+![SimpleConvNetv2](https://github.com/TQP1234/image_classification/assets/75831732/fc1c3354-5eee-4d49-ae4e-9811b2da954d)
 
 ## Training
 
@@ -79,17 +79,17 @@ The above parameters are used for training. Checkpoints are being saved every ep
 
 ### Training Loss vs Validation Loss
 
-![loss](https://github.com/TQP1234/image_classification/assets/75831732/b832906f-feaa-4bb2-b7f8-a720c099a6d2)
+![loss](https://github.com/TQP1234/image_classification/assets/75831732/65a9d402-a36a-4e6f-ac5d-5941feebe74c)
 
 ### Training Accuracy vs Validation Accuracy
 
-![accuracy](https://github.com/TQP1234/image_classification/assets/75831732/cc3bda6d-ed8d-49b4-b31e-159ca967f063)
+![accuracy](https://github.com/TQP1234/image_classification/assets/75831732/efb2169c-9162-4c37-b337-36ade53c21c7)
 
 ### Best checkpoint
 
-<img width="386" alt="best_checkpoint" src="https://github.com/TQP1234/image_classification/assets/75831732/9c04ea2f-8c0e-43c2-8365-fd643b6b7740">
+<img width="380" alt="best_checkpoint" src="https://github.com/TQP1234/image_classification/assets/75831732/1025cee0-4477-4dd0-97b2-4ca905afe75b">
 
-Validation accuracy is <b>slightly below 90%</b>. Not too bad.
+Validation accuracy is <b>91.53%</b>. Not too bad.
 
 ## Model Evaluation
 
@@ -97,7 +97,7 @@ In practical cases, we will always use unseen data as the test set to evaluate t
 
 ### Confusion Matrix
 
-![confusion_matrix](https://github.com/TQP1234/image_classification/assets/75831732/36d0f69f-0d6c-4061-a361-126ebf15c291)
+![confusion_matrix](https://github.com/TQP1234/image_classification/assets/75831732/cb4f4e42-41b2-43b7-83ec-a2363acc8bf7)
 
 As we can see, the model performs generally well. Most errors come from the buildings/street and glacier/mountain classes. It's because those pairs of classes are somewhat correlated. Glacier and mountain looked similar; street and buildings in a single image. To further improve this classification model, we may employ image augmentation technique.
 
