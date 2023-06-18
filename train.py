@@ -255,6 +255,7 @@ def main():
             with open(output_path + 'best.txt', 'w') as f:
                 f.write(best_checkpoint)
 
+        model.to(device)
         model.train()
 
         # plot training loss and validation loss
