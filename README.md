@@ -63,9 +63,9 @@ Dataset is to be stored stored in the following structure (Example shown below).
 
 ## Model Architecture
 
-It will be a custom Convolutional Neural Network built for experimentational. Model architeture is written at model.py. Inspiration taken from https://arxiv.org/abs/1709.01507 (Squeeze-and-Excitation Networks).
+It will be a custom Convolutional Neural Network built for experimentational. Model architecture is written in model.py. Inspiration taken from https://arxiv.org/abs/1709.01507 (Squeeze-and-Excitation Networks).
 
-![SimpleConvNetv2](https://github.com/TQP1234/image_classification/assets/75831732/fc1c3354-5eee-4d49-ae4e-9811b2da954d)
+![SimpleConvNetv2](https://github.com/TQP1234/image_classification/assets/75831732/8fe81b4a-db0f-41a1-999b-f15cff5d8636)
 
 ## Training
 
