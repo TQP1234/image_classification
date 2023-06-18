@@ -108,17 +108,12 @@ def main():
     torch.manual_seed(29)
     if saved_weight is not None:
         model = torch.jit.load(saved_weight).to(device)
-
-        traced_cell = model
-
     else:
         model = SimpleConvNet(3, image_size, len(class_names)).to(device)
 
-        for X_train, y_train in train_loader:
-            X_train = X_train.to(device)
-            traced_cell = torch.jit.trace(model, X_train)
-            break
-
+    # set train mode to True if it is False
+    if model.training is False:
+        model.train()
 
     print(f'\n{model}\n\n'
           f'number_of_training_images: {len(train_data)}\n'
@@ -180,7 +175,8 @@ def main():
 
             print('epoch: ' + str(i) + ', progress: ' + progress +
                   '/' + str(len(train_data)) + ', training_loss: ' +
-                  training_loss, end='\r')
+                  training_loss + ', learning_rate: ' +
+                  str(optimizer.param_groups[0]['lr']), end='\r')
 
         print()
 
@@ -238,7 +234,12 @@ def main():
 
         print(f'\n=====Validation=====\n{checkpoint}\n')
 
-        torch.jit.save(traced_cell,
+        if args.weight is not None:
+            traced_cell = model
+        else:
+            traced_cell = torch.jit.trace(model, X_train)
+
+        torch.jit.save(traced_cell.cpu(),
                        output_path + str(i).zfill(len(str(epochs))) + '.pt')
 
         with open(output_path + str(i).zfill(len(str(epochs))) + '.txt',
@@ -247,7 +248,7 @@ def main():
 
         # set f1 macro avg score as the criteria for the best score
         if macro_avg > best_f1_score:
-            torch.jit.save(traced_cell, output_path + 'best.pt')
+            torch.jit.save(traced_cell.cpu(), output_path + 'best.pt')
             best_f1_score = macro_avg
             best_checkpoint = checkpoint
 
